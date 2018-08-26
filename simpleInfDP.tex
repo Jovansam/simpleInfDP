@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{natbib}
+\usepackage{hyperref}
 
 \title{Code to solve infinite-horizon consumption-savings problems using dynamic programming}
 \author{
@@ -14,7 +15,7 @@
 
 \section{Introduction}
 
-This note describes six simple infinite-horizon consumption-savings problems that have been implemented in python using dynamic programming. The code can be found in the github repository at \ldots. Please let me know if you find any errors either in this document or in the code itself (see website for contact details).
+This note describes six simple infinite-horizon consumption-savings problems that have been implemented in python using dynamic programming. The code can be found in \href{https://github.com/jms202/simpleInfDP.git}{this} github repository. Please let me know if you find any errors either in this document or in the code itself (see website for contact details).
 
 \section{Continuous non-stochastic problem}
 
@@ -108,7 +109,7 @@ There are a couple of quirks in the discrete case. First, it is important to ens
 The code in \texttt{markovDiscreteCake.py} implements the same model as that in \texttt{iidDiscreteCake.py} except that taste shocks are now assumed to be Markovian. This is the model described in Section 3.3 of \citet{adda2003dynamic}. Estimation is now by the method of simulated moments (MSM) as described in Section 4.3.3. I don't believe it is possible to use maximum likelihood any more because the optimal policy can no longer be expressed as a simple closed-form threshold rule (though do tell me if I'm wrong!) This seemingly small change causes a host of problems because the MSM objective is discontinuous and a small change in the parameter vector may not change anyone's consumption decision. As a result, the estimation routine should not assume smoothness. Unfortunately, I could not find a more suitable algorithm in scipy so the current routine will not work well. I also haven't implemented the standard error calculations. Help with either of these issues would be appreciated.
 
 \bibliographystyle{apalike}
-\bibliography{cake-eating}
+\bibliography{simpleInfDP}
 
 \end{document}
 
